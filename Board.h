@@ -13,9 +13,9 @@ class Board
         //helper functions
         void printBoard();
 
-        int rows;
+        int xLength;
 
-        int column;
+        int yWidth;
 
-        int **p;
+        bool **currentBoard;
 };

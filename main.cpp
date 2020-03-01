@@ -4,7 +4,7 @@ using namespace std;
 
 int main(int argc, char **argv)
 {
-    Board *myBoard = new Board();
+    Board *myBoard = new Board(3, 5);
 
     // bool myTestArray[3][3];
 

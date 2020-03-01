@@ -8,63 +8,60 @@ Board::Board()
 
     int **boardArray;
 
-    rows = 20;
+    xLength = 20;
 
-    column = 20;
+    yWidth = 20;
 
-    p = new int*[rows];
-    for (int i = 0; i < rows; ++i)
+    currentBoard = new bool*[xLength];
+    for (int i = 0; i < xLength; ++i)
     {
         for (int j = 0; j < 3; ++j)
         {
-            p[i] = new int [column];
+            currentBoard[i] = new bool [yWidth];
         }
     }
 
     //initialize array
 
-    for (int i = 0; i < rows; ++i)
+    for (int i = 0; i < xLength; ++i)
     {
-        for (int j = 0; j < column; ++j)
+        for (int j = 0; j < yWidth; ++j)
         {
-           *(*(p+i)+j) = 1;
+           *(*(currentBoard+i)+j) = false;
         }
         cout << endl;
     }
-
-    //print array
-
-    for (int i = 0; i < rows; ++i)
-    {
-        for (int j = 0; j < column; ++j)
-        {
-            cout << *(*(p+i)+j) << " ";
-        }
-        cout << endl;
-    }
-
-    
-
-    // cout << boardArray[0][0] << endl;
 
 }
 
 Board::Board(int xSizeInput, int ySizeInput)
 {
-    // bool *boardArrayX[xSizeInput];
 
-    // for(int x = 0; x < xSizeInput; ++x)
-    // {
-    //     boardArray[x] = new bool[ySizeInput];
-    // }
+    int **boardArray;
 
-    // bool **boardArray;
-    // board = new bool* [ySizeInput];
+    xLength = xSizeInput;
 
-    // for(int y = 0; y < ySizeInput; ++y)
-    // {
-    //             boardArray[y] = new bool[xSizeInput];
-    // }     
+    yWidth = ySizeInput;
+
+    currentBoard = new bool*[xLength];
+    for (int i = 0; i < xLength; ++i)
+    {
+        for (int j = 0; j < 3; ++j)
+        {
+            currentBoard[i] = new bool [yWidth];
+        }
+    }
+
+    //initialize array
+
+    for (int i = 0; i < xLength; ++i)
+    {
+        for (int j = 0; j < yWidth; ++j)
+        {
+           *(*(currentBoard+i)+j) = false;
+        }
+        cout << endl;
+    }   
 
 }
 
@@ -73,20 +70,22 @@ Board::~Board()
 
 }
 
-bool Board::updateBoard()
-{
-    return true;
-}
+
 
 void Board::printBoard()
     {
-        //cout << boardArray[0][0] << endl;
-        // for(int x = 0; x < xSize; ++x)
-        // {
-        //     for(int y = 0; y < ySize; ++y)
-        //     {
-        //         cout << boardArray[x][y];
-        //     }
-        //     cout << endl;
-        // }
+
+    for (int i = 0; i < xLength; ++i)
+    {
+        for (int j = 0; j < yWidth; ++j)
+        {
+
+            if (*(*(currentBoard+i)+j))
+            {
+                cout << "X ";
+            } else cout << ". ";
+        }
+        cout << endl;
+    }
+
     }
