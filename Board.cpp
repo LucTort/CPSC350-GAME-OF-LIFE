@@ -6,9 +6,9 @@
 //default constructor
 Board::Board()
 {
-    height = 20;
+    height = 5;
 
-    width = 20;
+    width = 5;
 
     boardArray = new bool*[height];
     for (int i = 0; i < height; ++i)
@@ -73,12 +73,12 @@ Board::~Board()
 void Board::printBoard()
     {
 
-        for (int i = 0; i < height; ++i)
+        for (int x = 0; x < height; ++x)
         {
-            for (int j = 0; j < width; ++j)
+            for (int y = 0; y < width; ++y)
             {
 
-                if (*(*(boardArray+i)+j))
+                if (isCellAlive(x, y))
                 {
                     cout << "X ";
                 } else cout << ". ";
@@ -92,15 +92,20 @@ void Board::printBoard()
 
     bool Board::isCellAlive(int xPosition, int yPosition)
     {
-        return boardArray[xPosition][yPosition];//(*(*(boardArray + yPosition) + xPosition));
+        cout << "cell stat " << boardArray[xPosition][yPosition] << endl;
+        return boardArray[xPosition][yPosition];
     }
 
     void Board::setCellState(int xPosition, int yPosition, bool isAlive)
     {
-        boardArray[xPosition][yPosition] = isAlive;//*(*(boardArray + yPosition ) + xPosition ) = isAlive;
+        boardArray[xPosition][yPosition] = isAlive;
     }
 
     bool Board::isInBounds(int xPosition, int yPosition)
     {
+        // if ((xPosition < 0) || (yPosition < 0))
+        //     return false;
+        // if((xPosition < 0) || (yPosition < 0))
+        return true;
         
     }

@@ -12,7 +12,6 @@ void  BoardUpdater::UpdateBoard(Board& currentBoard)
 {
     int surroundingCells = 0;
     Board *placeholderBoard = new Board(currentBoard.width, currentBoard.height);
-    bool *boardArrayTest = currentBoard.boardArray[0];
 
     //
     //outer loop                                                                          
