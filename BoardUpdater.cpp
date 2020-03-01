@@ -13,48 +13,47 @@ void  BoardUpdater::UpdateBoard(Board& currentBoard)
     int surroundingCells = 0;
     Board *placeholderBoard = new Board(currentBoard.width, currentBoard.height);
 
+
     //
     //outer loop                                                                          
 
-     for (int i = 0; i < currentBoard.width; ++i)
+     for (int xBoard = 0; xBoard < currentBoard.width; ++xBoard)
      {
-         for (int j = 0; j < currentBoard.height; ++j)
+         for (int yBoard= 0; yBoard < currentBoard.height; ++yBoard)
          {
-
            //inner loop
-           for(int x = -1; x < 2; ++x)
+           for(int xLocal = -1; xLocal < 2; ++xLocal)
            {
-               for(int y = -1; y < 2; ++y)
+               for(int yLocal = -1; yLocal < 2; ++yLocal)
                 {
+                    //cout << xLocal << " " << yLocal << ":";
                     
-                    //cout << (i + x) << " " << (j + y) << endl;  //debugging text
-                    // //do stuff
                     if ( ! (
-                    (i + x < 0 )
-                    || ( j + y < 0 ) 
-                    || (i + x > (currentBoard.height - 1 ) )
-                    || ( j + y > (currentBoard.width - 1) )
-                    || ( ( (j + y) == 0) && ( (x + i) == 0) )
+                    (xBoard + xLocal < 0 )
+                    || (yBoard + yLocal < 0 ) 
+                    || (xBoard + xLocal > (currentBoard.height - 1 ) )
+                    || (yBoard + yLocal > (currentBoard.width - 1) )
+                    || ( ( (yBoard + yLocal) == 0) && ( (xBoard + xLocal) == 0) )
                     ))
                      {      
-                        // cout << (i + x) << " " << (j + y) << endl;  //debugging text    
-
-                         // if (*(*(currentBoard.boardArray + x + i) + y + j)
-                          if (currentBoard.boardArray[y + j][x + i])//something's messed up here
+                          if (currentBoard.isCellAlive( (xBoard + xLocal) , (yBoard + yLocal) ) )
                           {
                                surroundingCells++;
+                               cout << "There is a cell at" <<  (xBoard + xLocal) << " " << (yBoard + yLocal) << endl;
                           }
+                          
                     }//if
+                    
                 }//for
+                
            }//for
 
-           cout << "[" << (j) << ", " << (i) << "]: " <<surroundingCells << "  ";
+
             //end inner loop
 
-            placeholderBoard->setCellState(j, i, DoesCellLive(surroundingCells, currentBoard.isCellAlive(j, i) ));
-            //cout << surroundingCells << " ";
+            placeholderBoard->setCellState(xBoard, yBoard, DoesCellLive(surroundingCells, currentBoard.isCellAlive(xBoard, yBoard) ));
+
             surroundingCells = 0;
-        
          }//for
      }//for
      CopyBoard(*placeholderBoard, currentBoard);
@@ -73,6 +72,8 @@ void  BoardUpdater::CopyBoard(Board& boardToCopy, Board& boardToUpdate)
 
 bool BoardUpdater::DoesCellLive(int surroundingCells, bool currentState)
 {
+    //cout << surroundingCells << " ";
+
     if (surroundingCells >= 4)
         return false;
     else if (surroundingCells == 3)
