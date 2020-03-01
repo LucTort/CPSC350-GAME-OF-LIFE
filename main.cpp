@@ -1,5 +1,5 @@
-#include "Board.cpp"
-#include "BoardUpdater.h"
+// #include "Board.cpp"
+#include "BoardUpdater.cpp"
 
 using namespace std;
 
