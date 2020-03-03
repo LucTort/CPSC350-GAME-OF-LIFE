@@ -1,19 +1,16 @@
 #include "Board.cpp"
+#include "BoardUpdater.h"
 
 using namespace std;
 
 int main(int argc, char **argv)
 {
     Board *myBoard = new Board(3, 5);
+    Board *anotherBoard = new Board(3, 5);
 
-    // bool myTestArray[3][3];
+    BoardUpdater *boardUpdater = new BoardUpdater();
 
-    // bool myTestArray[3][4]; 
-//     = {  
-//    {0, 1, 2, 3} ,   /*  initializers for row indexed by 0 */
-//    {4, 5, 6, 7} ,   /*  initializers for row indexed by 1 */
-//    {8, 9, 10, 11}   /*  initializers for row indexed by 2 */
-// };
+    boardUpdater->UpdateBoard(myBoard, anotherBoard);
 
     myBoard->printBoard();
 

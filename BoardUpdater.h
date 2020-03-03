@@ -5,8 +5,9 @@ class BoardUpdater
 {
     public:
         BoardUpdater(); //default constructor
-        ~Board(); //destructor
+        ~BoardUpdater(); //destructor
 
-        void UpdateBoard(Board& currentBoard, Board& updatedBoard);
-        void CopyBoard(Board& currentBoard, Board& updatedBoard);
+        void UpdateBoard(Board&, Board&);
+        void CopyBoard(Board&, Board&);
+        bool IsLive(int, bool);
 };

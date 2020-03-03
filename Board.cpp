@@ -5,9 +5,6 @@
 //default constructor
 Board::Board()
 {
-
-    int **boardArray;
-
     xLength = 20;
 
     yWidth = 20;
@@ -37,7 +34,7 @@ Board::Board()
 Board::Board(int xSizeInput, int ySizeInput)
 {
 
-    int **boardArray;
+
 
     xLength = xSizeInput;
 

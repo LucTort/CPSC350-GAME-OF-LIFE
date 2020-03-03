@@ -52,3 +52,15 @@ void  BoardUpdater::copyBoard(Board& currentBoard, Board& updatedBoard)
         cout << endl;
     }
 }
+
+bool IsLive(int surroundingCells, bool currentState)
+{
+    if (surroundCells >= 4)
+        return false;
+    else if (surroundCells == 3)
+        return true;
+    else if (surroundCells >= 2)
+        return currentState;
+    else 
+        return false;
+}
