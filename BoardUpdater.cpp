@@ -26,35 +26,29 @@ void  BoardUpdater::UpdateBoard(Board& currentBoard)
            {
                for(int yLocal = -1; yLocal < 2; ++yLocal)
                 {
-                    //cout << xLocal << " " << yLocal << ":";
-                    
-                    if ( ! (
-                    (xBoard + xLocal < 0 )
-                    || (yBoard + yLocal < 0 ) 
-                    || (xBoard + xLocal > (currentBoard.height - 1 ) )
-                    || (yBoard + yLocal > (currentBoard.width - 1) )
-                    || ( ( (yBoard + yLocal) == 0) && ( (xBoard + xLocal) == 0) )
-                    ))
-                     {      
-                          if (currentBoard.isCellAlive( (xBoard + xLocal) , (yBoard + yLocal) ) )
-                          {
-                               surroundingCells++;
-                               cout << "There is a cell at" <<  (xBoard + xLocal) << " " << (yBoard + yLocal) << endl;
-                          }
-                          
+                    if (currentBoard.isInBounds((xBoard + xLocal), (yBoard + yLocal))) 
+                    {      
+                       surroundingCells += currentBoard.isCellAlive( (xBoard + xLocal) , (yBoard + yLocal) ) ;
+                       //cout << currentBoard.isCellAlive( (xBoard + xLocal) , (yBoard + yLocal) ) << " ";
                     }//if
-                    
+                
                 }//for
+                //cout << endl;
                 
            }//for
+           //cout << endl << endl;
 
 
             //end inner loop
 
+            surroundingCells -= currentBoard.isCellAlive(xBoard , yBoard);//subtracts from number of cells if the starting cell is alive
             placeholderBoard->setCellState(xBoard, yBoard, DoesCellLive(surroundingCells, currentBoard.isCellAlive(xBoard, yBoard) ));
+
+            //cout << "Surrounding Cells:" << surroundingCells << endl;
 
             surroundingCells = 0;
          }//for
+         surroundingCells = 0;
      }//for
      CopyBoard(*placeholderBoard, currentBoard);
 }//UpdateBoard

@@ -9,7 +9,7 @@ int main(int argc, char **argv)
 
     BoardUpdater *boardUpdater = new BoardUpdater();
 
-    for(int i = 0; i < 1; ++i)
+    for(int i = 0; i < 3; ++i)
     {
         myBoard->printBoard();
 

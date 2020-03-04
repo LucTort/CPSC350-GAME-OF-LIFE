@@ -92,7 +92,6 @@ void Board::printBoard()
 
     bool Board::isCellAlive(int xPosition, int yPosition)
     {
-        cout << "cell stat " << boardArray[xPosition][yPosition] << endl;
         return boardArray[xPosition][yPosition];
     }
 
@@ -103,9 +102,10 @@ void Board::printBoard()
 
     bool Board::isInBounds(int xPosition, int yPosition)
     {
-        // if ((xPosition < 0) || (yPosition < 0))
-        //     return false;
-        // if((xPosition < 0) || (yPosition < 0))
-        return true;
-        
+        if ((xPosition < 0) || (yPosition < 0))
+            return false;
+        else if((xPosition > width-1) || (yPosition > height-1))
+            return false;
+        else 
+            return true;
     }
