@@ -1,30 +1,31 @@
 //https://www.youtube.com/watch?v=fwYlzznrId4
+//https://www.cplusplus.com/reference/cstdlib/rand/
 
 #include "Board.h"
 
 //default constructor
 Board::Board()
 {
-    xLength = 20;
+    height = 20;
 
-    yWidth = 20;
+    width = 20;
 
-    currentBoard = new bool*[xLength];
-    for (int i = 0; i < xLength; ++i)
+    boardArray = new bool*[height];
+    for (int i = 0; i < height; ++i)
     {
-        for (int j = 0; j < 3; ++j)
+        for (int j = 0; j < width; ++j)
         {
-            currentBoard[i] = new bool [yWidth];
+            boardArray[i] = new bool [width];
         }
     }
 
     //initialize array
 
-    for (int i = 0; i < xLength; ++i)
+    for (int i = 0; i < height; ++i)
     {
-        for (int j = 0; j < yWidth; ++j)
+        for (int j = 0; j < width; ++j)
         {
-           *(*(currentBoard+i)+j) = false;
+           *(*(boardArray+i)+j) = rand() % 2;//random cells
         }
         cout << endl;
     }
@@ -36,26 +37,26 @@ Board::Board(int xSizeInput, int ySizeInput)
 
 
 
-    xLength = xSizeInput;
+    height = xSizeInput;
 
-    yWidth = ySizeInput;
+    width = ySizeInput;
 
-    currentBoard = new bool*[xLength];
-    for (int i = 0; i < xLength; ++i)
+    boardArray = new bool*[height];
+    for (int i = 0; i < height; ++i)
     {
-        for (int j = 0; j < 3; ++j)
+        for (int j = 0; j < width; ++j)
         {
-            currentBoard[i] = new bool [yWidth];
+            boardArray[i] = new bool [width];
         }
     }
 
     //initialize array
 
-    for (int i = 0; i < xLength; ++i)
+    for (int i = 0; i < height; ++i)
     {
-        for (int j = 0; j < yWidth; ++j)
+        for (int j = 0; j < width; ++j)
         {
-           *(*(currentBoard+i)+j) = false;
+           *(*(boardArray+i)+j) = rand() % 2;//random cells
         }
         cout << endl;
     }   
@@ -72,17 +73,34 @@ Board::~Board()
 void Board::printBoard()
     {
 
-    for (int i = 0; i < xLength; ++i)
-    {
-        for (int j = 0; j < yWidth; ++j)
+        for (int i = 0; i < height; ++i)
         {
-
-            if (*(*(currentBoard+i)+j))
+            for (int j = 0; j < width; ++j)
             {
-                cout << "X ";
-            } else cout << ". ";
+
+                if (*(*(boardArray+i)+j))
+                {
+                    cout << "X ";
+                } else cout << ". ";
+            }
+            cout << endl;
         }
+
         cout << endl;
+
     }
 
+    bool Board::isCellAlive(int xPosition, int yPosition)
+    {
+        return boardArray[xPosition][yPosition];//(*(*(boardArray + yPosition) + xPosition));
+    }
+
+    void Board::setCellState(int xPosition, int yPosition, bool isAlive)
+    {
+        boardArray[xPosition][yPosition] = isAlive;//*(*(boardArray + yPosition ) + xPosition ) = isAlive;
+    }
+
+    bool Board::isInBounds(int xPosition, int yPosition)
+    {
+        
     }

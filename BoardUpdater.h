@@ -1,4 +1,3 @@
-#include <iostream>
 #include "Board.cpp"
 using namespace std;
 
@@ -8,7 +7,7 @@ class BoardUpdater
         BoardUpdater(); //default constructor
         ~BoardUpdater(); //destructor
 
-        void UpdateBoard(Board&, Board&);
+        void UpdateBoard(Board&);
         void CopyBoard(Board&, Board&);
-        bool IsLive(int, bool);
+        bool DoesCellLive(int, bool);
 };

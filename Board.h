@@ -8,14 +8,20 @@ class Board
         Board(int xSize, int ySize); //overloaded constructor
         ~Board(); //destructor
         //functions
-        bool updateBoard();   //updatesBoard to next configuration. Returns true if board was static
+        //bool updateBoard();   //updatesBoard to next configuration. Returns true if board was static
 
         //helper functions
         void printBoard();
 
-        int xLength;
+        bool isCellAlive(int, int);
 
-        int yWidth;
+        void setCellState(int, int, bool);
 
-        bool **currentBoard;
+        bool isInBounds(int, int);
+
+        int height;
+
+        int width;
+
+        bool **boardArray; // boardArray[1][2]
 };
