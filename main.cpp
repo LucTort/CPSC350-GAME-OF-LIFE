@@ -9,12 +9,16 @@ int main(int argc, char **argv)
 
     BoardUpdater *boardUpdater = new BoardUpdater();
 
-    for(int i = 0; i < 3; ++i)
-    {
-        myBoard->printBoard();
+    ReadFile *myReadFile = new ReadFile();
+    // myReadFile->argRead(int, char**);
+    myReadFile->option();
 
-        boardUpdater->UpdateBoard(*myBoard);
-    }
+    // for(int i = 0; i < 3; ++i)
+    // {
+    //     myBoard->printBoard();
+    //
+    //     boardUpdater->UpdateBoard(*myBoard);
+    // }
 
 
 
