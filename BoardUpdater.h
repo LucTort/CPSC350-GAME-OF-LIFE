@@ -7,7 +7,9 @@ class BoardUpdater
         BoardUpdater(); //default constructor
         ~BoardUpdater(); //destructor
 
-        void UpdateBoard(Board&);
+        void UpdateBoard(Board&, int);
+        void RandomizeBoard(Board&, double);
         void CopyBoard(Board&, Board&);
         bool DoesCellLive(int, bool);
+        void WaitForEnter();
 };

@@ -25,7 +25,7 @@ Board::Board()
     {
         for (int j = 0; j < width; ++j)
         {
-           *(*(boardArray+i)+j) = rand() % 2;//random cells
+           *(*(boardArray+i)+j) = false;//random cells
         }
         cout << endl;
     }
@@ -56,7 +56,7 @@ Board::Board(int xSizeInput, int ySizeInput)
     {
         for (int j = 0; j < width; ++j)
         {
-           *(*(boardArray+i)+j) = rand() % 2;//random cells
+           *(*(boardArray+i)+j) = false;//random cells
         }
         cout << endl;
     }   
